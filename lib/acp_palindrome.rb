@@ -2,8 +2,7 @@
 
 require_relative "acp_palindrome/version"
 
-class String
-
+module AcpPalindrome
   # Returns true for a palindrome, false otherwise
   def palindrome?
     aux = processed_content
@@ -12,6 +11,14 @@ class String
 
   private
     def processed_content
-      scan(/[a-z]/i).join.downcase
+      to_s.scan(/[a-z0-9]/i).join.downcase
     end
+end
+
+class String
+  include AcpPalindrome
+end
+
+class Integer
+  include AcpPalindrome
 end
